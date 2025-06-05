@@ -6,6 +6,59 @@
   <style>
     body { font-family: Arial; padding: 20px; }
     nav a { margin-right: 15px; }
+    #chatPopup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    #chatHeader {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+    }
+    #chatContent {
+      padding: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    #chatInput {
+      width: calc(100% - 70px);
+      padding: 8px;
+      margin: 10px 5px 10px 10px;
+    }
+    #chatSend {
+      width: 50px;
+      padding: 8px;
+      margin: 10px 5px 10px 0;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #chatButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -32,6 +85,27 @@
   <footer>
     <p>&copy; 2025 My E-Commerce Store</p>
   </footer>
-</body>
-</html>
+
+  <!-- New Feature: Live Chat Button and Popup -->
+  <button id="chatButton" onclick="toggleChat()">💬</button>
+  <div id="chatPopup">
+    <div id="chatHeader">Live Chat Support</div>
+    <div id="chatContent"></div>
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+    <button id="chatSend" onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatPopup = document.getElementById('chatPopup');
+      chatPopup.style.display = chatPopup.style.display === 'block' ? 'none' : 'block';
+    }
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const content = document.getElementById('chatContent');
+      if (input.value.trim() !== '') {
+        content.innerHTML += '<p><strong>You:</strong> ' + input.value + '</p>';
+        input.value = '';
+        // Simulate a reply after 1 second
+        setTimeout
 
